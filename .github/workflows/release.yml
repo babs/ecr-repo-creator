@@ -1,4 +1,4 @@
-name: "Build OCI Image"
+name: "Release"
 
 on:
   push:
@@ -28,10 +28,12 @@ jobs:
             os: ubuntu-latest
           - platform: linux/arm64
             os: ubuntu-24.04-arm
+
     outputs:
       RAW_IMG_TAGS: ${{ steps.define-targets.outputs.RAW_IMG_TAGS }}
     steps:
       - uses: actions/checkout@v4
+
       - name: Define TARGETS
         id: define-targets
         run: |
@@ -129,3 +131,46 @@ jobs:
               echo "merged image $TGT" | tee -a $GITHUB_STEP_SUMMARY
             done
           done
+
+  create-binaries:
+    name: "Create binaries"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      attestations: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Build & release"
+        run: |
+          ./release.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: binaries
+          path: dist/
+
+  create-release:
+    name: "Create release"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      attestations: write
+      id-token: write
+    needs: [merge-images, create-binaries]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: binaries
+          path: dist/
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+              dist/*
