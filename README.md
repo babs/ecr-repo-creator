@@ -1,4 +1,6 @@
 # ecr-repo-creator
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbabs%2Fecr-repo-creator.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbabs%2Fecr-repo-creator?ref=badge_shield)
+
 
 Small tool to create AWS ECR repository if missing, static build to have no dependencies.
 
@@ -46,3 +48,6 @@ A prebuilt image of `kaniko` with `ecr-repo-creator`, `jq` and `envsubst` is ava
 ```bash
 docker pull ghcr.io/babs/kaniko-w-ecr-repo-creator:1
 ```
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbabs%2Fecr-repo-creator.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbabs%2Fecr-repo-creator?ref=badge_large)
