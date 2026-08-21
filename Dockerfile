@@ -23,4 +23,5 @@ LABEL org.opencontainers.image.source=https://github.com/babs/ecr-repo-creator
 
 COPY --from=ghcr.io/jqlang/jq /jq /usr/local/bin/
 COPY --from=golang-am8-envsubst /go/bin/envsubst /usr/local/bin/
+COPY --from=ghcr.io/babs/oci-toolbox:1 /usr/local/bin/crane /usr/local/bin/crane
 COPY --from=build-stage /app/ecr-repo-creator /usr/local/bin/
