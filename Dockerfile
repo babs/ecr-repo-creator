@@ -1,4 +1,4 @@
-ARG GOLANG_VERSION="1.24"
+ARG GOLANG_VERSION="1.27"
 # kaniko: Google archived GoogleContainerTools/kaniko (frozen at v1.24.0, Jun 2025);
 # use the maintained osscontainertools fork (deps/security/bug fixes).
 ARG KANIKO_VERSION="v1.27.5"

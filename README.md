@@ -32,7 +32,7 @@ The `Dockerfile` is a convenient way to add the tool to [Kaniko](https://github.
 Build:
 
 ```bash
-docker build -t new-build-image:latest --build-arg GOLANG_VERSION=1.22.5 --build-arg KANIKO_VERSION=v1.23.2 .
+docker build -t new-build-image:latest --build-arg GOLANG_VERSION=1.27 --build-arg KANIKO_VERSION=v1.27.5 .
 
 ```
 
