@@ -1,6 +1,6 @@
 module github.com/babs/ecr-repo-creator
 
-go 1.22.1
+go 1.27.3
 
 require (
 	github.com/aws/aws-sdk-go-v2/config v1.27.27
