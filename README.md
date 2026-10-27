@@ -27,18 +27,18 @@ Repository can either be in the following form:
 
 ## Dockerfile
 
-The `Dockerfile` is a convenient way to add the tool to [Kaniko](https://github.com/GoogleContainerTools/kaniko) build chain.
+The `Dockerfile` is a convenient way to add the tool to [Kaniko](https://github.com/osscontainertools/kaniko) build chain.
 
 Build:
 
 ```bash
-docker build -t new-build-image:latest --build-arg GOLANG_VERSION=1.27 --build-arg KANIKO_VERSION=v1.27.5 .
+docker build -t new-build-image:latest .
 
 ```
 
-For Kaniko version: https://github.com/GoogleContainerTools/kaniko/releases
+Override the Kaniko version with `--build-arg KANIKO_VERSION=<tag>`: https://github.com/osscontainertools/kaniko/releases
 
-For Golang version: https://hub.docker.com/_/golang
+Override the Golang version with `--build-arg GOLANG_VERSION=<tag>`: https://hub.docker.com/_/golang
 
 
 A prebuilt image of `kaniko` with `ecr-repo-creator`, `jq`, `envsubst` and `crane` is available at [ghcr.io/babs/kaniko-w-ecr-repo-creator](https://github.com/babs/ecr-repo-creator/pkgs/container/kaniko-w-ecr-repo-creator)
