@@ -46,3 +46,5 @@ A prebuilt image of `kaniko` with `ecr-repo-creator`, `jq`, `envsubst` and `cran
 ```bash
 docker pull ghcr.io/babs/kaniko-w-ecr-repo-creator:1
 ```
+
+Images are signed with cosign (keyless): the multi-arch index and every manifest under it. `unsigned-staging` is a CI scratch tag: never deploy it.
